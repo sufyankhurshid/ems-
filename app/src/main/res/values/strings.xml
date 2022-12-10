@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">EMS BLE Demo</string>
+    <string name="conn">Single connection</string>
+    <string name="conns">Multiple connections</string>
+    <string name="send">Send</string>
+    <string name="connected">connected</string>
+</resources>

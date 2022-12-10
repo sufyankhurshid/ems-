@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp"
+    android:orientation="vertical"
+    tools:context=".MoreActivity">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcv_device_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:id="@+id/tv_send"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="8dp"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:textColor="@color/colorBlack"
+        android:text="@string/send"
+        android:background="@drawable/btn_bg"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="40dp"/>
+
+</LinearLayout>

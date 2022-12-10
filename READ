@@ -1,0 +1,70 @@
+#①导入blelibrary_1_v1.2.40_release_20220525.aar包，选择blelibrary-sources.jar查看源码注释
+
+#②请求权限
+
+#③创建蓝牙通知回调 BleCallbackHelper mCallbackHelper = new BleCallbackHelper() {
+
+        scanDeviceCallBack(BluetoothDevice device, int rssi, byte[] advertising)
+        搜索蓝牙设备结果回调，
+
+        connectedSuccessCallBack
+        表示连接成功回调,
+        连接成功后创建设备类SuitDevice,并通过suitDevice.setNotification(true);
+                                            suitDevice.setNotificationFilsh(new NotificationFilsh() {
+                                                @Override
+                                                public void notificationFilsh(String uuid) {
+                                                }
+                                            });
+                                            设置接收设备通知
+        多连
+        （
+            保存连接设备
+            DeviceConnectedBus.getInstance(App.getInstance()).addDevice(SuitDevice)
+
+            获取单个设备(通过蓝牙mac地址获取)
+            DeviceConnectedBus.getInstance(App.getInstance()).getDevice(device.getAddress())
+
+            获取保存的所有设备
+            DeviceConnectedBus.getInstance(App.getInstance()).getAllConnectDevice()
+
+            移除断开设备
+            DeviceConnectedBus.getInstance(App.getInstance()).removeDevice(device.getAddress())
+        ），
+
+        onDisConnection
+        表示断开连接回调,如果使用了DeviceConnectedBus.getInstance(App.getInstance()).addDevice()保存设备，
+        如果设备断开连接
+        onError
+        表示断开连接回调,
+}
+
+#④注册蓝牙通知回调
+            BleManager.getInstance(App.getInstance()).registerCallback(mCallbackHelper),
+
+            注销回调(不需要获取设备蓝牙连接状态及接收设备通知时进行注销)
+            BleManager.getInstance(App.getInstance()).unRegisterCallback(mCallbackHelper)
+
+#⑤开始搜索蓝牙
+            BleManager.getInstance(App.getInstance()).scanDevice()
+
+            停止搜索蓝牙(如果进行设备连接需要先停止搜索蓝牙)
+            BleManager.getInstance(App.getInstance()).stopScan()
+
+#⑥ 获取连接后创建的SuitDevice，并通过suitDevice.getBluetoothGatt().getDevice().getName()
+            和suitDevice.getBluetoothGatt().getDevice().getAddress()获取设备的名称和mac地址。
+            通过获取到的name和mac地址创建Suit参数类，Suit类包含所有指令会用到的参数
+            ...
+
+#⑦发送指令
+            发送参数
+            SuitDevice.sendParameterToDevice(Suit)
+            发送开始
+            SuitDevice.sendStartToDevice()
+            发送部位强度
+            SuitDevice.sendWorkLevelToDevice(List<Suit.Part> parts, final OnReceiveCompleted onReceiveCompleted)
+            ...
+
+# ⑧ 使用已经连接设备创建的SuitDevice来调用类里的方法来发送指令
+
+================================其他的请查看代码注释=================================
+

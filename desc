@@ -1,0 +1,12 @@
+新加产品类型layout
+#背心(正——背)：vest_front vest_back.xml
+#连体(正——背)：jumpsuits_front jumpsuits_back.xml
+#私密裤(正——背)：private_pants_front private_pants_back.xml
+#提臀裤(正——背)：hip_pants_front hip_pants_back.xml
+#腰带1：belt_one.xml
+腰带2：belt_two.xml
+腰带3：belt_three.xml
+登录界面:activity_layout.xml
+新用户注册:activity_register.xml
+设置密码:activity_setting_password.xml
+获取验证码:activity_get_verification_code.xml
